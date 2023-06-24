@@ -1,1 +1,1 @@
-export * as otxm from "./otxm.js";
+export * as otxm from "./otxm";

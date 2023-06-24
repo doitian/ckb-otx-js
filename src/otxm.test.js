@@ -1,7 +1,7 @@
 import { OtxKeyPair, OtxMap, OtxMapVec, OpenTransaction } from "./otxm.js";
 
 test("OtxKeyPair without keyData", () => {
-  const pojo = { keyType: 1, valueData: "0x0f" };
+  const pojo = { keyTypex: 1, valueData: "0x0f" };
   const buf = OtxKeyPair.pack(pojo);
   expect(buf).toMatchSnapshot();
   expect(OtxKeyPair.unpack(buf)).toEqual(pojo);

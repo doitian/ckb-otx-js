@@ -1,6 +1,5 @@
 import { molecule, number } from "@ckb-lumos/codec";
 import { blockchain } from "@ckb-lumos/base";
-import { BI } from "@ckb-lumos/bi";
 
 const { table, vector } = molecule;
 export const { BytesOpt, Bytes, Byte32, Script, ScriptOpt, OutPoint } =
@@ -8,11 +7,11 @@ export const { BytesOpt, Bytes, Byte32, Script, ScriptOpt, OutPoint } =
 export const { Uint32LE, Uint64LE, Uint128LE } = number;
 
 /**
- * @typedef {(number|string|bigint|BI)} BIish
+ * @typedef {import("@ckb-lumos/bi").BIish} BIish
  */
 
 /**
- * @typedef {(ArrayLike<number>|ArrayBuffer|string)} BytesLike
+ * @typedef {import("@ckb-lumos/codec").BytesLike} BytesLike
  */
 
 /**
@@ -34,8 +33,8 @@ export const { Uint32LE, Uint64LE, Uint128LE } = number;
  * ```
  *
  * @typedef {Object} OtxKeyPair
- * @property {function(OtxKeyPairPOJO): Uint8Array} pack Packs `OtxKeyPairPOJO` into molecule buffer.
- * @property {function(BytesLike): OtxKeyPairPOJO} unpack Unpacks molecule buffer into `OtxKeyPairPOJO`.
+ * @property {(pojo: OtxKeyPairPOJO) => Uint8Array} pack Packs `OtxKeyPairPOJO` into molecule buffer.
+ * @property {(buf: BytesLike) => OtxKeyPairPOJO} unpack Unpacks molecule buffer into `OtxKeyPairPOJO`.
  */
 export const OtxKeyPair = table(
   {
@@ -54,8 +53,8 @@ export const OtxKeyPair = table(
  * ```
  *
  * @typedef {Object} OtxMap
- * @property {function(Array<OtxKeyPairPOJO>): Uint8Array} pack Packs `Array<OtxKeyPairPojo>` into molecule buffer.
- * @property {function(BytesLike): Array<OtxKeyPairPOJO>} unpack Unpacks molecule buffer into `Array<OtxKeyPairPOJO>`.
+ * @property {(pojo: Array<OtxKeyPairPOJO>) => Uint8Array} pack Packs `Array<OtxKeyPairPojo>` into molecule buffer.
+ * @property {(buf: BytesLike) => Array<OtxKeyPairPOJO>} unpack Unpacks molecule buffer into `Array<OtxKeyPairPOJO>`.
  */
 export const OtxMap = vector(OtxKeyPair);
 
@@ -67,8 +66,8 @@ export const OtxMap = vector(OtxKeyPair);
  * ```
  *
  * @typedef {Object} OtxMapVec
- * @property {function(Array<Array<OtxKeyPairPOJO>>): Uint8Array} pack Packs `Array<Array<OtxKeyPairPojo>>` into molecule buffer.
- * @property {function(BytesLike): Array<Array<OtxKeyPairPOJO>>} unpack Unpacks molecule buffer into `Array<Array<OtxKeyPairPOJO>>`.
+ * @property {(pojo: Array<Array<OtxKeyPairPOJO>>) => Uint8Array} pack Packs `Array<Array<OtxKeyPairPojo>>` into molecule buffer.
+ * @property {(buf: BytesLike) => Array<Array<OtxKeyPairPOJO>>} unpack Unpacks molecule buffer into `Array<Array<OtxKeyPairPOJO>>`.
  */
 export const OtxMapVec = vector(OtxMap);
 
@@ -97,8 +96,8 @@ export const OtxMapVec = vector(OtxMap);
  * ```
  *
  * @typedef {Object} OpenTransaction
- * @property {function(OpenTransactionPOJO): Uint8Array} pack Packs `OpenTransactionPOJO` into molecule buffer.
- * @property {function(BytesLike): OpenTransactionPOJO} unpack Unpacks molecule buffer into `OpenTransactionPOJO`.
+ * @property {(pojo: OpenTransactionPOJO) => Uint8Array} pack Packs `OpenTransactionPOJO` into molecule buffer.
+ * @property {(buf: BytesLike) => OpenTransactionPOJO} unpack Unpacks molecule buffer into `OpenTransactionPOJO`.
  */
 export const OpenTransaction = table(
   {
